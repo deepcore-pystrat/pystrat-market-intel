@@ -1,0 +1,902 @@
+{
+  "1": {
+    "train_start_idx": 0,
+    "train_end_idx_exclusive": 63,
+    "train_start": "2021-12-01T00:00:00+00:00",
+    "train_end": "2022-03-01T00:00:00+00:00",
+    "validation_start_idx": 63,
+    "validation_end_idx_exclusive": 84,
+    "validation_start": "2022-03-02T00:00:00+00:00",
+    "validation_end": "2022-03-30T00:00:00+00:00",
+    "test_start_idx": 84,
+    "test_end_idx_exclusive": 105,
+    "test_start": "2022-03-31T00:00:00+00:00",
+    "test_end": "2022-04-28T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "2": {
+    "train_start_idx": 21,
+    "train_end_idx_exclusive": 84,
+    "train_start": "2021-12-30T00:00:00+00:00",
+    "train_end": "2022-03-30T00:00:00+00:00",
+    "validation_start_idx": 84,
+    "validation_end_idx_exclusive": 105,
+    "validation_start": "2022-03-31T00:00:00+00:00",
+    "validation_end": "2022-04-28T00:00:00+00:00",
+    "test_start_idx": 105,
+    "test_end_idx_exclusive": 126,
+    "test_start": "2022-04-29T00:00:00+00:00",
+    "test_end": "2022-05-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "3": {
+    "train_start_idx": 42,
+    "train_end_idx_exclusive": 105,
+    "train_start": "2022-01-31T00:00:00+00:00",
+    "train_end": "2022-04-28T00:00:00+00:00",
+    "validation_start_idx": 105,
+    "validation_end_idx_exclusive": 126,
+    "validation_start": "2022-04-29T00:00:00+00:00",
+    "validation_end": "2022-05-27T00:00:00+00:00",
+    "test_start_idx": 126,
+    "test_end_idx_exclusive": 147,
+    "test_start": "2022-05-30T00:00:00+00:00",
+    "test_end": "2022-06-28T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "4": {
+    "train_start_idx": 63,
+    "train_end_idx_exclusive": 126,
+    "train_start": "2022-03-02T00:00:00+00:00",
+    "train_end": "2022-05-27T00:00:00+00:00",
+    "validation_start_idx": 126,
+    "validation_end_idx_exclusive": 147,
+    "validation_start": "2022-05-30T00:00:00+00:00",
+    "validation_end": "2022-06-28T00:00:00+00:00",
+    "test_start_idx": 147,
+    "test_end_idx_exclusive": 168,
+    "test_start": "2022-06-29T00:00:00+00:00",
+    "test_end": "2022-07-28T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 20
+    }
+  },
+  "5": {
+    "train_start_idx": 84,
+    "train_end_idx_exclusive": 147,
+    "train_start": "2022-03-31T00:00:00+00:00",
+    "train_end": "2022-06-28T00:00:00+00:00",
+    "validation_start_idx": 147,
+    "validation_end_idx_exclusive": 168,
+    "validation_start": "2022-06-29T00:00:00+00:00",
+    "validation_end": "2022-07-28T00:00:00+00:00",
+    "test_start_idx": 168,
+    "test_end_idx_exclusive": 189,
+    "test_start": "2022-07-29T00:00:00+00:00",
+    "test_end": "2022-08-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 50
+    }
+  },
+  "6": {
+    "train_start_idx": 105,
+    "train_end_idx_exclusive": 168,
+    "train_start": "2022-04-29T00:00:00+00:00",
+    "train_end": "2022-07-28T00:00:00+00:00",
+    "validation_start_idx": 168,
+    "validation_end_idx_exclusive": 189,
+    "validation_start": "2022-07-29T00:00:00+00:00",
+    "validation_end": "2022-08-26T00:00:00+00:00",
+    "test_start_idx": 189,
+    "test_end_idx_exclusive": 210,
+    "test_start": "2022-08-29T00:00:00+00:00",
+    "test_end": "2022-09-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "7": {
+    "train_start_idx": 126,
+    "train_end_idx_exclusive": 189,
+    "train_start": "2022-05-30T00:00:00+00:00",
+    "train_end": "2022-08-26T00:00:00+00:00",
+    "validation_start_idx": 189,
+    "validation_end_idx_exclusive": 210,
+    "validation_start": "2022-08-29T00:00:00+00:00",
+    "validation_end": "2022-09-26T00:00:00+00:00",
+    "test_start_idx": 210,
+    "test_end_idx_exclusive": 231,
+    "test_start": "2022-09-27T00:00:00+00:00",
+    "test_end": "2022-10-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "8": {
+    "train_start_idx": 147,
+    "train_end_idx_exclusive": 210,
+    "train_start": "2022-06-29T00:00:00+00:00",
+    "train_end": "2022-09-26T00:00:00+00:00",
+    "validation_start_idx": 210,
+    "validation_end_idx_exclusive": 231,
+    "validation_start": "2022-09-27T00:00:00+00:00",
+    "validation_end": "2022-10-25T00:00:00+00:00",
+    "test_start_idx": 231,
+    "test_end_idx_exclusive": 252,
+    "test_start": "2022-10-26T00:00:00+00:00",
+    "test_end": "2022-11-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "9": {
+    "train_start_idx": 168,
+    "train_end_idx_exclusive": 231,
+    "train_start": "2022-07-29T00:00:00+00:00",
+    "train_end": "2022-10-25T00:00:00+00:00",
+    "validation_start_idx": 231,
+    "validation_end_idx_exclusive": 252,
+    "validation_start": "2022-10-26T00:00:00+00:00",
+    "validation_end": "2022-11-23T00:00:00+00:00",
+    "test_start_idx": 252,
+    "test_end_idx_exclusive": 273,
+    "test_start": "2022-11-25T00:00:00+00:00",
+    "test_end": "2022-12-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 40
+    }
+  },
+  "10": {
+    "train_start_idx": 189,
+    "train_end_idx_exclusive": 252,
+    "train_start": "2022-08-29T00:00:00+00:00",
+    "train_end": "2022-11-23T00:00:00+00:00",
+    "validation_start_idx": 252,
+    "validation_end_idx_exclusive": 273,
+    "validation_start": "2022-11-25T00:00:00+00:00",
+    "validation_end": "2022-12-23T00:00:00+00:00",
+    "test_start_idx": 273,
+    "test_end_idx_exclusive": 294,
+    "test_start": "2022-12-27T00:00:00+00:00",
+    "test_end": "2023-01-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 30
+    }
+  },
+  "11": {
+    "train_start_idx": 210,
+    "train_end_idx_exclusive": 273,
+    "train_start": "2022-09-27T00:00:00+00:00",
+    "train_end": "2022-12-23T00:00:00+00:00",
+    "validation_start_idx": 273,
+    "validation_end_idx_exclusive": 294,
+    "validation_start": "2022-12-27T00:00:00+00:00",
+    "validation_end": "2023-01-26T00:00:00+00:00",
+    "test_start_idx": 294,
+    "test_end_idx_exclusive": 315,
+    "test_start": "2023-01-27T00:00:00+00:00",
+    "test_end": "2023-02-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 20
+    }
+  },
+  "12": {
+    "train_start_idx": 231,
+    "train_end_idx_exclusive": 294,
+    "train_start": "2022-10-26T00:00:00+00:00",
+    "train_end": "2023-01-26T00:00:00+00:00",
+    "validation_start_idx": 294,
+    "validation_end_idx_exclusive": 315,
+    "validation_start": "2023-01-27T00:00:00+00:00",
+    "validation_end": "2023-02-27T00:00:00+00:00",
+    "test_start_idx": 315,
+    "test_end_idx_exclusive": 336,
+    "test_start": "2023-02-28T00:00:00+00:00",
+    "test_end": "2023-03-28T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 80
+    }
+  },
+  "13": {
+    "train_start_idx": 252,
+    "train_end_idx_exclusive": 315,
+    "train_start": "2022-11-25T00:00:00+00:00",
+    "train_end": "2023-02-27T00:00:00+00:00",
+    "validation_start_idx": 315,
+    "validation_end_idx_exclusive": 336,
+    "validation_start": "2023-02-28T00:00:00+00:00",
+    "validation_end": "2023-03-28T00:00:00+00:00",
+    "test_start_idx": 336,
+    "test_end_idx_exclusive": 357,
+    "test_start": "2023-03-29T00:00:00+00:00",
+    "test_end": "2023-04-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "14": {
+    "train_start_idx": 273,
+    "train_end_idx_exclusive": 336,
+    "train_start": "2022-12-27T00:00:00+00:00",
+    "train_end": "2023-03-28T00:00:00+00:00",
+    "validation_start_idx": 336,
+    "validation_end_idx_exclusive": 357,
+    "validation_start": "2023-03-29T00:00:00+00:00",
+    "validation_end": "2023-04-26T00:00:00+00:00",
+    "test_start_idx": 357,
+    "test_end_idx_exclusive": 378,
+    "test_start": "2023-04-27T00:00:00+00:00",
+    "test_end": "2023-05-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 80
+    }
+  },
+  "15": {
+    "train_start_idx": 294,
+    "train_end_idx_exclusive": 357,
+    "train_start": "2023-01-27T00:00:00+00:00",
+    "train_end": "2023-04-26T00:00:00+00:00",
+    "validation_start_idx": 357,
+    "validation_end_idx_exclusive": 378,
+    "validation_start": "2023-04-27T00:00:00+00:00",
+    "validation_end": "2023-05-25T00:00:00+00:00",
+    "test_start_idx": 378,
+    "test_end_idx_exclusive": 399,
+    "test_start": "2023-05-26T00:00:00+00:00",
+    "test_end": "2023-06-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "16": {
+    "train_start_idx": 315,
+    "train_end_idx_exclusive": 378,
+    "train_start": "2023-02-28T00:00:00+00:00",
+    "train_end": "2023-05-25T00:00:00+00:00",
+    "validation_start_idx": 378,
+    "validation_end_idx_exclusive": 399,
+    "validation_start": "2023-05-26T00:00:00+00:00",
+    "validation_end": "2023-06-27T00:00:00+00:00",
+    "test_start_idx": 399,
+    "test_end_idx_exclusive": 420,
+    "test_start": "2023-06-28T00:00:00+00:00",
+    "test_end": "2023-07-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 40
+    }
+  },
+  "17": {
+    "train_start_idx": 336,
+    "train_end_idx_exclusive": 399,
+    "train_start": "2023-03-29T00:00:00+00:00",
+    "train_end": "2023-06-27T00:00:00+00:00",
+    "validation_start_idx": 399,
+    "validation_end_idx_exclusive": 420,
+    "validation_start": "2023-06-28T00:00:00+00:00",
+    "validation_end": "2023-07-27T00:00:00+00:00",
+    "test_start_idx": 420,
+    "test_end_idx_exclusive": 441,
+    "test_start": "2023-07-28T00:00:00+00:00",
+    "test_end": "2023-08-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 40
+    }
+  },
+  "18": {
+    "train_start_idx": 357,
+    "train_end_idx_exclusive": 420,
+    "train_start": "2023-04-27T00:00:00+00:00",
+    "train_end": "2023-07-27T00:00:00+00:00",
+    "validation_start_idx": 420,
+    "validation_end_idx_exclusive": 441,
+    "validation_start": "2023-07-28T00:00:00+00:00",
+    "validation_end": "2023-08-25T00:00:00+00:00",
+    "test_start_idx": 441,
+    "test_end_idx_exclusive": 462,
+    "test_start": "2023-08-28T00:00:00+00:00",
+    "test_end": "2023-09-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "19": {
+    "train_start_idx": 378,
+    "train_end_idx_exclusive": 441,
+    "train_start": "2023-05-26T00:00:00+00:00",
+    "train_end": "2023-08-25T00:00:00+00:00",
+    "validation_start_idx": 441,
+    "validation_end_idx_exclusive": 462,
+    "validation_start": "2023-08-28T00:00:00+00:00",
+    "validation_end": "2023-09-26T00:00:00+00:00",
+    "test_start_idx": 462,
+    "test_end_idx_exclusive": 483,
+    "test_start": "2023-09-27T00:00:00+00:00",
+    "test_end": "2023-10-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "20": {
+    "train_start_idx": 399,
+    "train_end_idx_exclusive": 462,
+    "train_start": "2023-06-28T00:00:00+00:00",
+    "train_end": "2023-09-26T00:00:00+00:00",
+    "validation_start_idx": 462,
+    "validation_end_idx_exclusive": 483,
+    "validation_start": "2023-09-27T00:00:00+00:00",
+    "validation_end": "2023-10-25T00:00:00+00:00",
+    "test_start_idx": 483,
+    "test_end_idx_exclusive": 504,
+    "test_start": "2023-10-26T00:00:00+00:00",
+    "test_end": "2023-11-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "21": {
+    "train_start_idx": 420,
+    "train_end_idx_exclusive": 483,
+    "train_start": "2023-07-28T00:00:00+00:00",
+    "train_end": "2023-10-25T00:00:00+00:00",
+    "validation_start_idx": 483,
+    "validation_end_idx_exclusive": 504,
+    "validation_start": "2023-10-26T00:00:00+00:00",
+    "validation_end": "2023-11-24T00:00:00+00:00",
+    "test_start_idx": 504,
+    "test_end_idx_exclusive": 525,
+    "test_start": "2023-11-27T00:00:00+00:00",
+    "test_end": "2023-12-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "22": {
+    "train_start_idx": 441,
+    "train_end_idx_exclusive": 504,
+    "train_start": "2023-08-28T00:00:00+00:00",
+    "train_end": "2023-11-24T00:00:00+00:00",
+    "validation_start_idx": 504,
+    "validation_end_idx_exclusive": 525,
+    "validation_start": "2023-11-27T00:00:00+00:00",
+    "validation_end": "2023-12-26T00:00:00+00:00",
+    "test_start_idx": 525,
+    "test_end_idx_exclusive": 546,
+    "test_start": "2023-12-27T00:00:00+00:00",
+    "test_end": "2024-01-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 60
+    }
+  },
+  "23": {
+    "train_start_idx": 462,
+    "train_end_idx_exclusive": 525,
+    "train_start": "2023-09-27T00:00:00+00:00",
+    "train_end": "2023-12-26T00:00:00+00:00",
+    "validation_start_idx": 525,
+    "validation_end_idx_exclusive": 546,
+    "validation_start": "2023-12-27T00:00:00+00:00",
+    "validation_end": "2024-01-26T00:00:00+00:00",
+    "test_start_idx": 546,
+    "test_end_idx_exclusive": 567,
+    "test_start": "2024-01-29T00:00:00+00:00",
+    "test_end": "2024-02-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "24": {
+    "train_start_idx": 483,
+    "train_end_idx_exclusive": 546,
+    "train_start": "2023-10-26T00:00:00+00:00",
+    "train_end": "2024-01-26T00:00:00+00:00",
+    "validation_start_idx": 546,
+    "validation_end_idx_exclusive": 567,
+    "validation_start": "2024-01-29T00:00:00+00:00",
+    "validation_end": "2024-02-27T00:00:00+00:00",
+    "test_start_idx": 567,
+    "test_end_idx_exclusive": 588,
+    "test_start": "2024-02-28T00:00:00+00:00",
+    "test_end": "2024-03-27T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "25": {
+    "train_start_idx": 504,
+    "train_end_idx_exclusive": 567,
+    "train_start": "2023-11-27T00:00:00+00:00",
+    "train_end": "2024-02-27T00:00:00+00:00",
+    "validation_start_idx": 567,
+    "validation_end_idx_exclusive": 588,
+    "validation_start": "2024-02-28T00:00:00+00:00",
+    "validation_end": "2024-03-27T00:00:00+00:00",
+    "test_start_idx": 588,
+    "test_end_idx_exclusive": 609,
+    "test_start": "2024-03-28T00:00:00+00:00",
+    "test_end": "2024-04-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "26": {
+    "train_start_idx": 525,
+    "train_end_idx_exclusive": 588,
+    "train_start": "2023-12-27T00:00:00+00:00",
+    "train_end": "2024-03-27T00:00:00+00:00",
+    "validation_start_idx": 588,
+    "validation_end_idx_exclusive": 609,
+    "validation_start": "2024-03-28T00:00:00+00:00",
+    "validation_end": "2024-04-25T00:00:00+00:00",
+    "test_start_idx": 609,
+    "test_end_idx_exclusive": 630,
+    "test_start": "2024-04-26T00:00:00+00:00",
+    "test_end": "2024-05-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "27": {
+    "train_start_idx": 546,
+    "train_end_idx_exclusive": 609,
+    "train_start": "2024-01-29T00:00:00+00:00",
+    "train_end": "2024-04-25T00:00:00+00:00",
+    "validation_start_idx": 609,
+    "validation_end_idx_exclusive": 630,
+    "validation_start": "2024-04-26T00:00:00+00:00",
+    "validation_end": "2024-05-24T00:00:00+00:00",
+    "test_start_idx": 630,
+    "test_end_idx_exclusive": 651,
+    "test_start": "2024-05-28T00:00:00+00:00",
+    "test_end": "2024-06-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 100
+    }
+  },
+  "28": {
+    "train_start_idx": 567,
+    "train_end_idx_exclusive": 630,
+    "train_start": "2024-02-28T00:00:00+00:00",
+    "train_end": "2024-05-24T00:00:00+00:00",
+    "validation_start_idx": 630,
+    "validation_end_idx_exclusive": 651,
+    "validation_start": "2024-05-28T00:00:00+00:00",
+    "validation_end": "2024-06-26T00:00:00+00:00",
+    "test_start_idx": 651,
+    "test_end_idx_exclusive": 672,
+    "test_start": "2024-06-27T00:00:00+00:00",
+    "test_end": "2024-07-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "29": {
+    "train_start_idx": 588,
+    "train_end_idx_exclusive": 651,
+    "train_start": "2024-03-28T00:00:00+00:00",
+    "train_end": "2024-06-26T00:00:00+00:00",
+    "validation_start_idx": 651,
+    "validation_end_idx_exclusive": 672,
+    "validation_start": "2024-06-27T00:00:00+00:00",
+    "validation_end": "2024-07-26T00:00:00+00:00",
+    "test_start_idx": 672,
+    "test_end_idx_exclusive": 693,
+    "test_start": "2024-07-29T00:00:00+00:00",
+    "test_end": "2024-08-26T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "30": {
+    "train_start_idx": 609,
+    "train_end_idx_exclusive": 672,
+    "train_start": "2024-04-26T00:00:00+00:00",
+    "train_end": "2024-07-26T00:00:00+00:00",
+    "validation_start_idx": 672,
+    "validation_end_idx_exclusive": 693,
+    "validation_start": "2024-07-29T00:00:00+00:00",
+    "validation_end": "2024-08-26T00:00:00+00:00",
+    "test_start_idx": 693,
+    "test_end_idx_exclusive": 714,
+    "test_start": "2024-08-27T00:00:00+00:00",
+    "test_end": "2024-09-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "31": {
+    "train_start_idx": 630,
+    "train_end_idx_exclusive": 693,
+    "train_start": "2024-05-28T00:00:00+00:00",
+    "train_end": "2024-08-26T00:00:00+00:00",
+    "validation_start_idx": 693,
+    "validation_end_idx_exclusive": 714,
+    "validation_start": "2024-08-27T00:00:00+00:00",
+    "validation_end": "2024-09-25T00:00:00+00:00",
+    "test_start_idx": 714,
+    "test_end_idx_exclusive": 735,
+    "test_start": "2024-09-26T00:00:00+00:00",
+    "test_end": "2024-10-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 70
+    }
+  },
+  "32": {
+    "train_start_idx": 651,
+    "train_end_idx_exclusive": 714,
+    "train_start": "2024-06-27T00:00:00+00:00",
+    "train_end": "2024-09-25T00:00:00+00:00",
+    "validation_start_idx": 714,
+    "validation_end_idx_exclusive": 735,
+    "validation_start": "2024-09-26T00:00:00+00:00",
+    "validation_end": "2024-10-24T00:00:00+00:00",
+    "test_start_idx": 735,
+    "test_end_idx_exclusive": 756,
+    "test_start": "2024-10-25T00:00:00+00:00",
+    "test_end": "2024-11-22T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 60
+    }
+  },
+  "33": {
+    "train_start_idx": 672,
+    "train_end_idx_exclusive": 735,
+    "train_start": "2024-07-29T00:00:00+00:00",
+    "train_end": "2024-10-24T00:00:00+00:00",
+    "validation_start_idx": 735,
+    "validation_end_idx_exclusive": 756,
+    "validation_start": "2024-10-25T00:00:00+00:00",
+    "validation_end": "2024-11-22T00:00:00+00:00",
+    "test_start_idx": 756,
+    "test_end_idx_exclusive": 777,
+    "test_start": "2024-11-25T00:00:00+00:00",
+    "test_end": "2024-12-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 80
+    }
+  },
+  "34": {
+    "train_start_idx": 693,
+    "train_end_idx_exclusive": 756,
+    "train_start": "2024-08-27T00:00:00+00:00",
+    "train_end": "2024-11-22T00:00:00+00:00",
+    "validation_start_idx": 756,
+    "validation_end_idx_exclusive": 777,
+    "validation_start": "2024-11-25T00:00:00+00:00",
+    "validation_end": "2024-12-24T00:00:00+00:00",
+    "test_start_idx": 777,
+    "test_end_idx_exclusive": 798,
+    "test_start": "2024-12-25T00:00:00+00:00",
+    "test_end": "2025-01-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 80
+    }
+  },
+  "35": {
+    "train_start_idx": 714,
+    "train_end_idx_exclusive": 777,
+    "train_start": "2024-09-26T00:00:00+00:00",
+    "train_end": "2024-12-24T00:00:00+00:00",
+    "validation_start_idx": 777,
+    "validation_end_idx_exclusive": 798,
+    "validation_start": "2024-12-25T00:00:00+00:00",
+    "validation_end": "2025-01-23T00:00:00+00:00",
+    "test_start_idx": 798,
+    "test_end_idx_exclusive": 819,
+    "test_start": "2025-01-24T00:00:00+00:00",
+    "test_end": "2025-02-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 30
+    }
+  },
+  "36": {
+    "train_start_idx": 735,
+    "train_end_idx_exclusive": 798,
+    "train_start": "2024-10-25T00:00:00+00:00",
+    "train_end": "2025-01-23T00:00:00+00:00",
+    "validation_start_idx": 798,
+    "validation_end_idx_exclusive": 819,
+    "validation_start": "2025-01-24T00:00:00+00:00",
+    "validation_end": "2025-02-24T00:00:00+00:00",
+    "test_start_idx": 819,
+    "test_end_idx_exclusive": 840,
+    "test_start": "2025-02-25T00:00:00+00:00",
+    "test_end": "2025-03-25T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 80
+    }
+  },
+  "37": {
+    "train_start_idx": 756,
+    "train_end_idx_exclusive": 819,
+    "train_start": "2024-11-25T00:00:00+00:00",
+    "train_end": "2025-02-24T00:00:00+00:00",
+    "validation_start_idx": 819,
+    "validation_end_idx_exclusive": 840,
+    "validation_start": "2025-02-25T00:00:00+00:00",
+    "validation_end": "2025-03-25T00:00:00+00:00",
+    "test_start_idx": 840,
+    "test_end_idx_exclusive": 861,
+    "test_start": "2025-03-26T00:00:00+00:00",
+    "test_end": "2025-04-24T00:00:00+00:00",
+    "best_params": {
+      "periods": 10,
+      "window": 80
+    }
+  },
+  "38": {
+    "train_start_idx": 777,
+    "train_end_idx_exclusive": 840,
+    "train_start": "2024-12-25T00:00:00+00:00",
+    "train_end": "2025-03-25T00:00:00+00:00",
+    "validation_start_idx": 840,
+    "validation_end_idx_exclusive": 861,
+    "validation_start": "2025-03-26T00:00:00+00:00",
+    "validation_end": "2025-04-24T00:00:00+00:00",
+    "test_start_idx": 861,
+    "test_end_idx_exclusive": 882,
+    "test_start": "2025-04-25T00:00:00+00:00",
+    "test_end": "2025-05-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 80
+    }
+  },
+  "39": {
+    "train_start_idx": 798,
+    "train_end_idx_exclusive": 861,
+    "train_start": "2025-01-24T00:00:00+00:00",
+    "train_end": "2025-04-24T00:00:00+00:00",
+    "validation_start_idx": 861,
+    "validation_end_idx_exclusive": 882,
+    "validation_start": "2025-04-25T00:00:00+00:00",
+    "validation_end": "2025-05-23T00:00:00+00:00",
+    "test_start_idx": 882,
+    "test_end_idx_exclusive": 903,
+    "test_start": "2025-05-26T00:00:00+00:00",
+    "test_end": "2025-06-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "40": {
+    "train_start_idx": 819,
+    "train_end_idx_exclusive": 882,
+    "train_start": "2025-02-25T00:00:00+00:00",
+    "train_end": "2025-05-23T00:00:00+00:00",
+    "validation_start_idx": 882,
+    "validation_end_idx_exclusive": 903,
+    "validation_start": "2025-05-26T00:00:00+00:00",
+    "validation_end": "2025-06-23T00:00:00+00:00",
+    "test_start_idx": 903,
+    "test_end_idx_exclusive": 924,
+    "test_start": "2025-06-24T00:00:00+00:00",
+    "test_end": "2025-07-23T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "41": {
+    "train_start_idx": 840,
+    "train_end_idx_exclusive": 903,
+    "train_start": "2025-03-26T00:00:00+00:00",
+    "train_end": "2025-06-23T00:00:00+00:00",
+    "validation_start_idx": 903,
+    "validation_end_idx_exclusive": 924,
+    "validation_start": "2025-06-24T00:00:00+00:00",
+    "validation_end": "2025-07-23T00:00:00+00:00",
+    "test_start_idx": 924,
+    "test_end_idx_exclusive": 945,
+    "test_start": "2025-07-24T00:00:00+00:00",
+    "test_end": "2025-08-21T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "42": {
+    "train_start_idx": 861,
+    "train_end_idx_exclusive": 924,
+    "train_start": "2025-04-25T00:00:00+00:00",
+    "train_end": "2025-07-23T00:00:00+00:00",
+    "validation_start_idx": 924,
+    "validation_end_idx_exclusive": 945,
+    "validation_start": "2025-07-24T00:00:00+00:00",
+    "validation_end": "2025-08-21T00:00:00+00:00",
+    "test_start_idx": 945,
+    "test_end_idx_exclusive": 966,
+    "test_start": "2025-08-22T00:00:00+00:00",
+    "test_end": "2025-09-19T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "43": {
+    "train_start_idx": 882,
+    "train_end_idx_exclusive": 945,
+    "train_start": "2025-05-26T00:00:00+00:00",
+    "train_end": "2025-08-21T00:00:00+00:00",
+    "validation_start_idx": 945,
+    "validation_end_idx_exclusive": 966,
+    "validation_start": "2025-08-22T00:00:00+00:00",
+    "validation_end": "2025-09-19T00:00:00+00:00",
+    "test_start_idx": 966,
+    "test_end_idx_exclusive": 987,
+    "test_start": "2025-09-22T00:00:00+00:00",
+    "test_end": "2025-10-20T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 60
+    }
+  },
+  "44": {
+    "train_start_idx": 903,
+    "train_end_idx_exclusive": 966,
+    "train_start": "2025-06-24T00:00:00+00:00",
+    "train_end": "2025-09-19T00:00:00+00:00",
+    "validation_start_idx": 966,
+    "validation_end_idx_exclusive": 987,
+    "validation_start": "2025-09-22T00:00:00+00:00",
+    "validation_end": "2025-10-20T00:00:00+00:00",
+    "test_start_idx": 987,
+    "test_end_idx_exclusive": 1008,
+    "test_start": "2025-10-21T00:00:00+00:00",
+    "test_end": "2025-11-18T00:00:00+00:00",
+    "best_params": {
+      "periods": 7,
+      "window": 10
+    }
+  },
+  "45": {
+    "train_start_idx": 924,
+    "train_end_idx_exclusive": 987,
+    "train_start": "2025-07-24T00:00:00+00:00",
+    "train_end": "2025-10-20T00:00:00+00:00",
+    "validation_start_idx": 987,
+    "validation_end_idx_exclusive": 1008,
+    "validation_start": "2025-10-21T00:00:00+00:00",
+    "validation_end": "2025-11-18T00:00:00+00:00",
+    "test_start_idx": 1008,
+    "test_end_idx_exclusive": 1029,
+    "test_start": "2025-11-19T00:00:00+00:00",
+    "test_end": "2025-12-17T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "46": {
+    "train_start_idx": 945,
+    "train_end_idx_exclusive": 1008,
+    "train_start": "2025-08-22T00:00:00+00:00",
+    "train_end": "2025-11-18T00:00:00+00:00",
+    "validation_start_idx": 1008,
+    "validation_end_idx_exclusive": 1029,
+    "validation_start": "2025-11-19T00:00:00+00:00",
+    "validation_end": "2025-12-17T00:00:00+00:00",
+    "test_start_idx": 1029,
+    "test_end_idx_exclusive": 1050,
+    "test_start": "2025-12-18T00:00:00+00:00",
+    "test_end": "2026-01-19T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 50
+    }
+  },
+  "47": {
+    "train_start_idx": 966,
+    "train_end_idx_exclusive": 1029,
+    "train_start": "2025-09-22T00:00:00+00:00",
+    "train_end": "2025-12-17T00:00:00+00:00",
+    "validation_start_idx": 1029,
+    "validation_end_idx_exclusive": 1050,
+    "validation_start": "2025-12-18T00:00:00+00:00",
+    "validation_end": "2026-01-19T00:00:00+00:00",
+    "test_start_idx": 1050,
+    "test_end_idx_exclusive": 1071,
+    "test_start": "2026-01-20T00:00:00+00:00",
+    "test_end": "2026-02-17T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  },
+  "48": {
+    "train_start_idx": 987,
+    "train_end_idx_exclusive": 1050,
+    "train_start": "2025-10-21T00:00:00+00:00",
+    "train_end": "2026-01-19T00:00:00+00:00",
+    "validation_start_idx": 1050,
+    "validation_end_idx_exclusive": 1071,
+    "validation_start": "2026-01-20T00:00:00+00:00",
+    "validation_end": "2026-02-17T00:00:00+00:00",
+    "test_start_idx": 1071,
+    "test_end_idx_exclusive": 1092,
+    "test_start": "2026-02-18T00:00:00+00:00",
+    "test_end": "2026-03-18T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 100
+    }
+  },
+  "49": {
+    "train_start_idx": 1008,
+    "train_end_idx_exclusive": 1071,
+    "train_start": "2025-11-19T00:00:00+00:00",
+    "train_end": "2026-02-17T00:00:00+00:00",
+    "validation_start_idx": 1071,
+    "validation_end_idx_exclusive": 1092,
+    "validation_start": "2026-02-18T00:00:00+00:00",
+    "validation_end": "2026-03-18T00:00:00+00:00",
+    "test_start_idx": 1092,
+    "test_end_idx_exclusive": 1113,
+    "test_start": "2026-03-19T00:00:00+00:00",
+    "test_end": "2026-04-16T00:00:00+00:00",
+    "best_params": {
+      "periods": 4,
+      "window": 100
+    }
+  },
+  "50": {
+    "train_start_idx": 1029,
+    "train_end_idx_exclusive": 1092,
+    "train_start": "2025-12-18T00:00:00+00:00",
+    "train_end": "2026-03-18T00:00:00+00:00",
+    "validation_start_idx": 1092,
+    "validation_end_idx_exclusive": 1113,
+    "validation_start": "2026-03-19T00:00:00+00:00",
+    "validation_end": "2026-04-16T00:00:00+00:00",
+    "test_start_idx": 1113,
+    "test_end_idx_exclusive": 1134,
+    "test_start": "2026-04-17T00:00:00+00:00",
+    "test_end": "2026-05-15T00:00:00+00:00",
+    "best_params": {
+      "periods": 1,
+      "window": 20
+    }
+  }
+}

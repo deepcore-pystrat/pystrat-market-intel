@@ -1,0 +1,11 @@
+{
+  "artifact_schema_version": 1,
+  "created_at": "2026-08-21T08:42:33.669710+00:00",
+  "kind": "fusion",
+  "fusion": "corn_fusion_majority",
+  "components": [
+    "corn_arg_zscore",
+    "corn_brz_zscore",
+    "corn_spread_zscore"
+  ]
+}
