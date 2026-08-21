@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.vscode/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+# pro artifacts: keep runs local unless you deliberately version them
+artifacts/runs/

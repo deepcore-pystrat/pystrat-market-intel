@@ -1,0 +1,81 @@
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+
+from market_intel_pystrat.jobs.run.run_calibration import run_calibration
+from market_intel_pystrat.jobs.run.run_update import run_update
+from market_intel_pystrat.jobs.run.run_view import run_view
+from market_intel_pystrat.profiles.catalog_data import REGISTRY, FUSIONS
+
+from market_intel_pystrat.jobs.run.run_fusion import run_fusion
+
+def _default_run_dir(args: argparse.Namespace) -> Path:
+    return args.out or Path("artifacts/runs") / args.profile
+
+
+def _cmd_calibration(args):
+    out_dir = _default_run_dir(args)
+    run_calibration(args.profile, out_dir,
+                    os.environ.get("MARKET_INTEL_DATA_DIR"), source=args.source)
+    print(f"run: {out_dir.resolve()}")
+
+
+def _cmd_update(args):
+    run_dir = _default_run_dir(args)
+    run_update(args.profile, run_dir,
+               os.environ.get("MARKET_INTEL_DATA_DIR"), source=args.source)
+    print(f"run: {run_dir.resolve()}")
+
+
+def _cmd_view(args):
+    run_dir = _default_run_dir(args)
+    run_view(run_dir)
+    print(f"run: {run_dir.resolve()}")
+
+def _cmd_fusion(args):
+    out_dir = args.out or Path("artifacts/runs") / args.fusion
+    run_fusion(args.fusion, out_dir,
+               os.environ.get("MARKET_INTEL_DATA_DIR"), source=args.source)
+    print(f"run: {out_dir.resolve()}")
+
+
+def _add_profile_args(p: argparse.ArgumentParser) -> None:
+    p.add_argument("profile", choices=sorted(REGISTRY), help="profile name")
+    p.add_argument("--out", type=Path, default=None,
+                   help="run directory (default: artifacts/runs/<profile>)")
+    p.add_argument("--source", choices=("excel", "postgres"), default="excel",
+                   help="data source for the profile inputs")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="market_intel run jobs")
+    sub = parser.add_subparsers(dest="job", required=True)
+
+    p_cal = sub.add_parser("calibration", help="calibrate a profile and write its report")
+    _add_profile_args(p_cal)
+    p_cal.set_defaults(func=_cmd_calibration)
+
+    p_upd = sub.add_parser("update", help="extend a saved schedule on current data and rewrite the view")
+    _add_profile_args(p_upd)
+    p_upd.set_defaults(func=_cmd_update)
+
+    p_view = sub.add_parser("view", help="(re)render the HTML report of a saved run")
+    _add_profile_args(p_view)
+    p_view.set_defaults(func=_cmd_view)
+
+    p_fus = sub.add_parser("fusion", help="replay component schedules under a fused strategy")
+    p_fus.add_argument("fusion", choices=sorted(FUSIONS), help="fusion name")
+    p_fus.add_argument("--out", type=Path, default=None,
+                       help="run directory (default: artifacts/runs/<fusion>)")
+    p_fus.add_argument("--source", choices=("excel", "postgres"), default="excel",
+                       help="data source for the fusion inputs")
+    p_fus.set_defaults(func=_cmd_fusion)
+
+    args = parser.parse_args()
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()
