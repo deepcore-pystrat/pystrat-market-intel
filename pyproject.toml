@@ -13,6 +13,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest"]
 postgres = ["psycopg2-binary>=2.9", "python-dotenv"]
+ingest = ["psycopg2-binary>=2.9", "python-dotenv", "ib_insync"]
 
 [build-system]
 requires = ["setuptools>=61.0"]
