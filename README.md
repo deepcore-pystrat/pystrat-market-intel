@@ -75,7 +75,7 @@ $env:MARKET_INTEL_DATA_DIR = "C:\path\to\data"
 ### Postgres (`--source postgres`)
 Copy `.env.example` to `.env` at the repo root and fill in your DeepCore DB credentials (never commit `.env`). Environment variables work too.
 
-Currently available in the DB: SB11 futures, VHP/THP/CORN_ARG/CORN_BRZ spots, coffee spots. **CORN futures are not populated yet**, so the corn profiles are Excel-only for now.
+Currently available in the DB: SB11 futures, VHP/THP/CORN_ARG/CORN_BRZ spots, coffee spots. **CORN futures are not populated yet**: the corn profiles are fully wired for postgres (loader + registry) but only work with `--source excel` until the futures table is populated.
 
 ## Usage
 

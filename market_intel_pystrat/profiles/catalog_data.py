@@ -7,10 +7,11 @@ from typing import Callable, Optional, Union, Tuple
 
 from market_intel_pystrat.data.profile_inputs_data import ProfileInputs
 from market_intel_pystrat.data.loaders.excel_loader import (
-    load_corn_inputs,
+    load_corn_inputs as load_corn_inputs_excel,
     load_sb11_basis_inputs as load_sb11_basis_inputs_excel,
 )
 from market_intel_pystrat.data.loaders.postgres_loader import (
+    load_corn_inputs as load_corn_inputs_postgres,
     load_sb11_basis_inputs as load_sb11_basis_inputs_postgres,
 )
 from market_intel_pystrat.profiles.profile_data import MarketIntelProfile
@@ -54,23 +55,27 @@ REGISTRY = {
         partial(load_sb11_basis_inputs_excel,start=sb11_rsi_fut.DATA_START, end=sb11_rsi_fut.DATA_END),
         partial(load_sb11_basis_inputs_postgres,start=sb11_rsi_fut.DATA_START, end=sb11_rsi_fut.DATA_END),
     ),
-    # Corn futures are not in the DeepCore DB yet: excel only.
-    # ADD postgres partial functions when corn futures are added to DeepCore DB.
+    # CORN futures are wired to the shared futures table but not populated in
+    # the DeepCore DB yet: the postgres loaders fail until then (spots are in).
     "corn_arg_zscore": ProfileEntry(
         corn_arg_zscore.profile,
-        partial(load_corn_inputs, start=corn_arg_zscore.DATA_START, end=corn_arg_zscore.DATA_END),
+        partial(load_corn_inputs_excel, start=corn_arg_zscore.DATA_START, end=corn_arg_zscore.DATA_END),
+        partial(load_corn_inputs_postgres, start=corn_arg_zscore.DATA_START, end=corn_arg_zscore.DATA_END),
     ),
     "corn_brz_zscore": ProfileEntry(
         corn_brz_zscore.profile,
-        partial(load_corn_inputs, start=corn_brz_zscore.DATA_START, end=corn_brz_zscore.DATA_END),
+        partial(load_corn_inputs_excel, start=corn_brz_zscore.DATA_START, end=corn_brz_zscore.DATA_END),
+        partial(load_corn_inputs_postgres, start=corn_brz_zscore.DATA_START, end=corn_brz_zscore.DATA_END),
     ),
     "save_corn_brz_full_history": ProfileEntry(
         save_corn_brz_full_history.profile,
-        partial(load_corn_inputs, start=save_corn_brz_full_history.DATA_START, end=save_corn_brz_full_history.DATA_END),
+        partial(load_corn_inputs_excel, start=save_corn_brz_full_history.DATA_START, end=save_corn_brz_full_history.DATA_END),
+        partial(load_corn_inputs_postgres, start=save_corn_brz_full_history.DATA_START, end=save_corn_brz_full_history.DATA_END),
     ),
     "corn_spread_zscore": ProfileEntry(
         corn_spread_zscore.profile,
-        partial(load_corn_inputs, start=corn_spread_zscore.DATA_START, end=corn_spread_zscore.DATA_END),
+        partial(load_corn_inputs_excel, start=corn_spread_zscore.DATA_START, end=corn_spread_zscore.DATA_END),
+        partial(load_corn_inputs_postgres, start=corn_spread_zscore.DATA_START, end=corn_spread_zscore.DATA_END),
     ),
 }
 
