@@ -4,7 +4,11 @@ Market Intel (DeepCore) strategy profiles built on top of the [pystrat](https://
 
 ## Installation
 
-Requires Python >= 3.9 and access to the `deepcore-pystrat` GitHub organization (the `pystrat` library is installed from GitHub automatically).
+Requires Python >= 3.9 and access to the `deepcore-pystrat` GitHub organization. `pystrat` is a separate **library** repo ([pystrat-lib](https://github.com/deepcore-pystrat/pystrat-lib)); this repo is the **application** that depends on it, the same way it depends on pandas. Pick the scenario that matches your role.
+
+### Scenario A — use / develop this project only (most common)
+
+You do **not** need to clone the library: pip fetches it from GitHub automatically (you will be asked to authenticate, since the repo is private).
 
 ```bash
 git clone https://github.com/deepcore-pystrat/pystrat-market-intel.git
@@ -15,6 +19,47 @@ pip install -e .[dev,postgres]
 ```
 
 `[postgres]` is only needed to read the DeepCore database; `[dev]` adds pytest.
+
+> ⚠️ In this scenario the installed `pystrat` is a **frozen copy** taken at install time.
+> When new library changes are pushed, `git pull` on this repo is NOT enough — you must
+> reinstall the library:
+>
+> ```bash
+> pip install --force-reinstall --no-deps "pystrat @ git+https://github.com/deepcore-pystrat/pystrat-lib.git"
+> ```
+>
+> Classic symptom of forgetting this: "I pulled but it still doesn't work."
+
+### Scenario B — also contribute to the pystrat library
+
+Clone **both** repos side by side and install the library in editable mode, so `import pystrat` points at your local clone and every edit is picked up immediately:
+
+```bash
+git clone https://github.com/deepcore-pystrat/pystrat-lib.git
+git clone https://github.com/deepcore-pystrat/pystrat-market-intel.git
+
+cd pystrat-market-intel
+python -m venv .venv
+.venv\Scripts\activate
+
+pip install -e ../pystrat-lib          # the library FIRST, editable
+pip install -e .[dev,postgres]         # then the project (pystrat already satisfied, not re-downloaded)
+```
+
+### Day-to-day team workflow
+
+```bash
+git pull                    # in every repo you cloned, to get others' work
+# ... work, then:
+git add .
+git commit -m "..."
+git push
+```
+
+Rules of thumb:
+- A library change can break this project: after pulling `pystrat-lib`, run `python -m pytest -q` in **both** repos
+- Scenario A + library updated upstream = reinstall pystrat (see warning above)
+- Never commit `.env` or real credentials; `artifacts/runs/` contains the shared reference runs — do not overwrite them casually
 
 ## Data sources
 
