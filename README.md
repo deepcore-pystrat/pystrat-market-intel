@@ -91,6 +91,10 @@ python -m market_intel_pystrat.scripts.run view corn_brz_zscore
 
 # Replay several calibrated components under a fused strategy
 python -m market_intel_pystrat.scripts.run fusion corn_fusion_majority
+
+# Daily automation: ingest latest IBKR bars into the DB, then update every
+# followed profile (requires [ingest] extra, IB Gateway and DB credentials)
+python -m market_intel_pystrat.scripts.run daily
 ```
 
 Profiles and fusions are declared in `market_intel_pystrat/profiles/catalog_data.py` (`REGISTRY` / `FUSIONS`).

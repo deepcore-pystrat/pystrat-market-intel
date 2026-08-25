@@ -23,7 +23,6 @@ from market_intel_pystrat.profiles.corn_profiles import (
     corn_arg_zscore,
     corn_brz_zscore,
     corn_spread_zscore,
-    save_corn_brz_full_history
 )
 from pystrat.strategy.core.targets.targets_data import Targets
 from pystrat.strategy.core.targets.targets_services import unanimous_merge, majority_merge
@@ -66,11 +65,6 @@ REGISTRY = {
         corn_brz_zscore.profile,
         partial(load_corn_inputs_excel, start=corn_brz_zscore.DATA_START, end=corn_brz_zscore.DATA_END),
         partial(load_corn_inputs_postgres, start=corn_brz_zscore.DATA_START, end=corn_brz_zscore.DATA_END),
-    ),
-    "save_corn_brz_full_history": ProfileEntry(
-        save_corn_brz_full_history.profile,
-        partial(load_corn_inputs_excel, start=save_corn_brz_full_history.DATA_START, end=save_corn_brz_full_history.DATA_END),
-        partial(load_corn_inputs_postgres, start=save_corn_brz_full_history.DATA_START, end=save_corn_brz_full_history.DATA_END),
     ),
     "corn_spread_zscore": ProfileEntry(
         corn_spread_zscore.profile,

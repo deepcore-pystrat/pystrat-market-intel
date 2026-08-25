@@ -1,4 +1,4 @@
-"""CLI entry point: python -m market_intel_pystrat.scripts.run {calibration|update|view|fusion} <name>.
+"""CLI entry point: python -m market_intel_pystrat.scripts.run {calibration|update|view|fusion|daily} [name].
 
 Excel inputs are read from the MARKET_INTEL_DATA_DIR environment variable.
 """
@@ -6,10 +6,12 @@ Excel inputs are read from the MARKET_INTEL_DATA_DIR environment variable.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from pathlib import Path
 
 from market_intel_pystrat.jobs.run.run_calibration import run_calibration
+from market_intel_pystrat.jobs.run.run_daily import FOLLOWED_PROFILES, has_failures, run_daily
 from market_intel_pystrat.jobs.run.run_update import run_update
 from market_intel_pystrat.jobs.run.run_view import run_view
 from market_intel_pystrat.profiles.catalog_data import REGISTRY, FUSIONS
@@ -46,6 +48,20 @@ def _cmd_fusion(args):
     print(f"run: {out_dir.resolve()}")
 
 
+def _cmd_daily(args):
+    report = run_daily(
+        args.runs_root,
+        profiles=tuple(args.profiles) if args.profiles else FOLLOWED_PROFILES,
+        source=args.source,
+        ingest=not args.skip_ingest,
+        duration=args.duration,
+        data_dir=os.environ.get("MARKET_INTEL_DATA_DIR"),
+    )
+    print(json.dumps(report, indent=2))
+    if has_failures(report):
+        raise SystemExit(1)
+
+
 def _add_profile_args(p: argparse.ArgumentParser) -> None:
     p.add_argument("profile", choices=sorted(REGISTRY), help="profile name")
     p.add_argument("--out", type=Path, default=None,
@@ -78,6 +94,19 @@ def main() -> None:
     p_fus.add_argument("--source", choices=("excel", "postgres"), default="excel",
                        help="data source for the fusion inputs")
     p_fus.set_defaults(func=_cmd_fusion)
+
+    p_daily = sub.add_parser("daily", help="ingest latest IBKR bars then update every followed profile")
+    p_daily.add_argument("--profiles", nargs="*", default=None, choices=sorted(REGISTRY),
+                         help=f"profiles to update (default: {', '.join(FOLLOWED_PROFILES)})")
+    p_daily.add_argument("--source", choices=("excel", "postgres"), default="postgres",
+                         help="data source for the profile inputs")
+    p_daily.add_argument("--skip-ingest", action="store_true",
+                         help="skip the IBKR ingestion step")
+    p_daily.add_argument("--duration", default="2 D",
+                         help="IBKR history duration (e.g. '2 D'; '15 Y' for a backfill)")
+    p_daily.add_argument("--runs-root", type=Path, default=Path("artifacts/runs"),
+                         help="directory containing the run folders")
+    p_daily.set_defaults(func=_cmd_daily)
 
     args = parser.parse_args()
     args.func(args)
