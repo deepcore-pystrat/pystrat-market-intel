@@ -24,7 +24,7 @@ from market_intel_pystrat.data.profile_inputs_data import (
 
 
 def sb11_spec() -> InstrumentSpec:
-
+    """Sugar #11 futures spec (ICE): multiplier 1120 USD/point, unit lots."""
     return InstrumentSpec(
         id=InstrumentId(symbol="SB11", venue="ICE"),
         asset_class=AssetClass.COMMODITY,
@@ -42,7 +42,7 @@ def assemble_sb11_basis_inputs(
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
-
+    """Build SB11 ProfileInputs: VHP/THP basis mids and future close on the futures clock."""
     ohlcv = slice_window(ohlcv, start, end)
     vhp = slice_window(vhp, start, end)
     thp = slice_window(thp, start, end)

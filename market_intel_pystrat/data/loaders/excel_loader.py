@@ -29,6 +29,7 @@ from market_intel_pystrat.data.assembly.corn_assembly_services import assemble_c
 
 
 def build_excel_provider(data_dir: Union[str, Path]) -> ExcelProvider:
+    """ExcelProvider over every catalog file in `data_dir` (see excel_catalog_data)."""
     data_dir = Path(data_dir)
     sources = {}
     for key, file_name in FUTURES_FILES.items():
@@ -48,6 +49,7 @@ def load_sb11_basis_inputs(
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
+    """SB11 ProfileInputs from the Excel files in `data_dir`."""
     provider = build_excel_provider(data_dir)
     return assemble_sb11_basis_inputs(
         ohlcv=provider.get_data(SB11_KEY),
@@ -62,6 +64,7 @@ def load_corn_inputs(
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
+    """Corn ProfileInputs from the Excel files in `data_dir`."""
     provider = build_excel_provider(data_dir)
     return assemble_corn_inputs(
         ohlcv=provider.get_data(CORN_KEY),

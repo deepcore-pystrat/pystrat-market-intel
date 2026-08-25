@@ -21,6 +21,8 @@ from pystrat.strategy.strategies.piecewise_strategy import Handoff
 
 @dataclass(frozen=True)
 class MarketIntelProfile:
+    """Complete declaration of one strategy study: everything the jobs need to
+    calibrate, replay, extend and report it (data enters separately via ProfileInputs)."""
 
     name : str
     add_features : Callable[[Context], Context]

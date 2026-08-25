@@ -30,7 +30,11 @@ _REQUIRED_KEYS = (
 )
 
 def load_deepcore_config(env_path : Optional[Union[str, Path]] = None) -> PostgresConfig :
+    """Read Postgres settings from a .env file and/or environment variables.
 
+    Looks for POSTGRES_HOST/DATABASE/USERNAME/PASSWORD (+ optional PORT);
+    .env values override the environment. Raises if any required key is missing.
+    """
     from dotenv import dotenv_values
 
     values = dict(os.environ)
@@ -59,7 +63,7 @@ def load_deepcore_config(env_path : Optional[Union[str, Path]] = None) -> Postgr
 
 
 def parse_futures_frame(raw : pd.DataFrame) -> pd.DataFrame :
-
+    """Raw futures rows -> canonical OHLCV bars (prices rescaled from DB cents)."""
     out = raw.copy()
     out["date"] = pd.to_datetime(out["date"])
     out = out.set_index("date").sort_index()
@@ -81,7 +85,7 @@ def parse_futures_frame(raw : pd.DataFrame) -> pd.DataFrame :
 
 
 def parse_quotations_frame(raw : pd.DataFrame) -> pd.DataFrame :
-
+    """Raw quotations rows -> canonical bid/offer basis frame (DatetimeIndex)."""
     out = raw.copy()
 
     out["date"] = pd.to_datetime(out["date"])
@@ -97,7 +101,7 @@ def parse_quotations_frame(raw : pd.DataFrame) -> pd.DataFrame :
 
 
 def futures_source(asset_name : str) -> PostgresSource :
-
+    """PostgresSource for one futures family (see FUTURES_ASSET_NAMES)."""
     asset_upper = asset_name.upper()
 
     if asset_upper not in FUTURES_ASSET_NAMES:
@@ -113,7 +117,7 @@ def futures_source(asset_name : str) -> PostgresSource :
 
 
 def spot_source(asset_name : str) -> PostgresSource :
-
+    """PostgresSource for one mono-series spot (see SPOT_ASSET_IDS)."""
     if asset_name not in SPOT_ASSET_IDS:
         raise KeyError(
             f"Unknown spot asset '{asset_name}'. "
@@ -128,7 +132,7 @@ def spot_source(asset_name : str) -> PostgresSource :
 
 
 def parse_coffee_frame(raw : pd.DataFrame) -> pd.DataFrame :
-
+    """Raw coffee quotations -> long-form basis (origin, value = bid/offer mid)."""
     out = raw.copy()
 
     out["date"] = pd.to_datetime(out["date"])
@@ -147,7 +151,7 @@ def parse_coffee_frame(raw : pd.DataFrame) -> pd.DataFrame :
 
 
 def coffee_spot_source(asset_name : str) -> PostgresSource :
-
+    """PostgresSource for one multi-origin coffee spot (see COFFEE_SPOT_ASSET_IDS)."""
     if asset_name not in COFFEE_SPOT_ASSET_IDS:
         raise KeyError(
             f"Unknown coffee spot asset '{asset_name}'. "

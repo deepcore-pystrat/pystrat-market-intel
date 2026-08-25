@@ -28,17 +28,15 @@ from pystrat.strategy.strategies.piecewise_strategy import Handoff
 from market_intel_pystrat.data.profile_inputs_data import CORN_KEY, SPOT_ARG_COLUMN
 from market_intel_pystrat.profiles.profile_data import MarketIntelProfile
 
-# Legacy profile_corn_arg: load window, tiered sizing and capital.
 DATA_START = "2021-12-01"
 DATA_END = "2026-07-01"
 _BASE_NOTIONAL = 300_000_000.0
 _CAPITAL = 300_000_000.0
 _TIERS = ((1.0, _BASE_NOTIONAL * 1.00), (2.0, _BASE_NOTIONAL * 1.50))
-# _TIERS = ((1.0, _BASE_NOTIONAL * 0.8), (2.0, _BASE_NOTIONAL * 1.2))
 
 
 
-# Covers the max feature lookback (diff.periods 9 + zscore.window 100).
+
 _WARMUP_BARS = 110
 
 
@@ -47,12 +45,6 @@ def add_features(context: Context) -> Context:
     return context
 
 
-# def make_space() -> dict:
-#     """Legacy optuna space: diff.periods in {1,3,5,7,9}, zscore.window in {5..100 step 5}."""
-#     return {
-#         "periods": Choice(tuple(range(1, 10, 2))),
-#         "window": Choice(tuple(range(5, 101, 5))),
-#     }
 def make_space() -> dict:
     """Legacy optuna space: diff.periods in {1,3,5,7,9}, zscore.window in {5..100 step 5}."""
     return {
@@ -81,7 +73,6 @@ def build_strategy(params: Mapping[str, Any]) -> Strategy:
 
 import pandas as pd
 def decision_series(context: Context, schedule: Mapping[str, Any]) -> Mapping[str, Any]:
-
     spot = context.frames[CORN_KEY][SPOT_ARG_COLUMN]
     stitched = pd.Series(float("nan"), index=spot.index, name="zscore")
     for key in sorted(schedule, key=int):
@@ -98,18 +89,14 @@ def decision_series(context: Context, schedule: Mapping[str, Any]) -> Mapping[st
 
 
 def score_corn_arg(metrics: Mapping[str, float]) -> float:
-    """Legacy objective: sharpe only."""
     return float(metrics["calmar"])
 
 
 def profile() -> MarketIntelProfile:
-    """Replication of legacy profile_corn_arg (zscore of diffed ARG spot)."""
     return MarketIntelProfile(
         name="corn_arg_zscore",
         add_features=add_features,
-        optimizer=OptunaOptimizer.from_search_space(make_space(), n_trials=15, seed=42), # best is 15
-        # optimizer=RandomOptimizer(make_space(), n_trials=20, seed=42),
-        # optimizer=GridOptimizer(make_space()),
+        optimizer=OptunaOptimizer.from_search_space(make_space(), n_trials=15, seed=42), 
 
         search_score=mean_segment_search_score("train"),
         build_strategy=build_strategy,

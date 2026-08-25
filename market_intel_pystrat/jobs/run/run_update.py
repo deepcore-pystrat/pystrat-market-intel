@@ -11,10 +11,10 @@ from pystrat.research.calibration.replay.replay_services import replay_from_sche
 
 from market_intel_pystrat.jobs.report import render_run
 from market_intel_pystrat.profiles.catalog_services import load_profile_inputs
-from market_intel_pystrat.jobs.report import save_view_html
 from market_intel_pystrat.profiles.catalog_data import REGISTRY
 
 def _read_schedule(run_dir : Path) -> Mapping[str, Any] : 
+    """Read the run's saved schedule; empty mapping if none exists yet."""
     f = run_dir / "calibration_schedule.json"
     return json.loads(f.read_text()) if f.exists() else {}
 
@@ -26,7 +26,11 @@ def run_update(
         *,
         source : str = "excel",
 ) -> Path :
+    """Extend a run's calibration with newly available folds, then replay and re-render.
 
+    Works from scratch too (empty schedule). The last fold's params are held to
+    the end of the data (live-like behaviour between recalibrations).
+    """
     run_dir = Path(run_dir)
     entry = REGISTRY[name]
     profile = entry.build_profile()

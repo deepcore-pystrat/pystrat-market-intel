@@ -1,3 +1,8 @@
+"""CLI entry point: python -m market_intel_pystrat.scripts.run {calibration|update|view|fusion} <name>.
+
+Excel inputs are read from the MARKET_INTEL_DATA_DIR environment variable.
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -50,6 +55,7 @@ def _add_profile_args(p: argparse.ArgumentParser) -> None:
 
 
 def main() -> None:
+    """Parse the command line and dispatch to the matching job."""
     parser = argparse.ArgumentParser(description="market_intel run jobs")
     sub = parser.add_subparsers(dest="job", required=True)
 

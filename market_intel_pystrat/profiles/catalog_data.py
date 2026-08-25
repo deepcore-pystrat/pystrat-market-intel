@@ -31,6 +31,7 @@ from pystrat.strategy.core.targets.targets_services import last_flip_majority_me
 
 @dataclass(frozen=True)
 class ProfileEntry:
+    """Registry entry: how to build a profile and load its inputs per source."""
 
     build_profile: Callable[[], MarketIntelProfile]
     load_inputs_excel: Callable[[Union[str, Path]], ProfileInputs]
@@ -76,6 +77,7 @@ REGISTRY = {
 
 @dataclass(frozen=True)
 class FusionEntry:
+    """Fusion recipe: component profiles, Targets combiner and whose inputs to reuse."""
     components: Tuple[str, ...]  
     combine_factory : Callable[[], Callable[..., Targets]]
     inputs_from: str

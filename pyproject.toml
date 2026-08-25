@@ -6,13 +6,13 @@ requires-python = ">=3.9"
 dependencies = [
     "pandas",
     "numpy",
-    "pystrat",
+    "pystrat @ git+https://github.com/deepcore-pystrat/pystrat-lib.git",
+    "plotly>=5",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
-plotting = ["plotly>=5"]
-postgres = ["psycopg2-binary>=2.9"]
+postgres = ["psycopg2-binary>=2.9", "python-dotenv"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

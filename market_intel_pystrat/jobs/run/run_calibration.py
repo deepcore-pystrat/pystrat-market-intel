@@ -18,6 +18,11 @@ def run_calibration(
     *,
     source: str = "excel",
 ) -> Path:
+    """Calibrate a registered profile end-to-end and render its HTML reports.
+
+    Research-only CSVs are pruned afterwards; the run directory keeps the
+    replayable core (schedule, OOS results, reports).
+    """
     out_dir = Path(out_dir)
     entry = REGISTRY[name]
     profile = entry.build_profile()

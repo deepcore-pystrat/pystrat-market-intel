@@ -18,7 +18,10 @@ from pystrat.research.calibration.walk_forward.walk_forward_services import (
 )
 def calibrate(profile: MarketIntelProfile, inputs: ProfileInputs,
               out_dir: Union[str, Path], *, overwrite: bool = False) -> Context:
+    """Full calibration of one profile: search, per-fold selection, OOS replay, artifacts.
 
+    Returns the feature-enriched Context so callers can derive decision series.
+    """
     context = profile.add_features(inputs.context)
 
     search = run_walk_forward_per_fold if profile.per_fold_search else run_walk_forward

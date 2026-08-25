@@ -14,7 +14,7 @@ def load_profile_inputs(
     source: str = "excel",
     data_dir: Optional[Union[str, Path]] = None,
 ) -> ProfileInputs:
-
+    """Load a profile's inputs from 'excel' (requires data_dir) or 'postgres'."""
     if source == "excel":
 
         if data_dir is None:

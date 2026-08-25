@@ -24,6 +24,7 @@ SPREAD_COLUMN = "spread"
 
 @dataclass(frozen=True)
 class ProfileInputs :
+    """Everything a profile needs to run: aligned Context, price frames and specs."""
 
     context : Context
     price_frames : Mapping[str, pd.DataFrame]

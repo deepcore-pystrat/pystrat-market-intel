@@ -27,7 +27,7 @@ def load_sb11_basis_inputs(
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
-
+    """SB11 ProfileInputs from the DeepCore DB (config from .env when omitted)."""
     if config is None:
         config = load_deepcore_config()
 

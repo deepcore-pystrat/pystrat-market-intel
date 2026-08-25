@@ -13,6 +13,7 @@ from market_intel_pystrat.profiles.catalog_services import load_profile_inputs
 from market_intel_pystrat.jobs.report import render_run
 
 def _read_schedule(run_dir: Path) -> dict:
+    """Read a component's saved schedule; fail if it was never calibrated."""
     f = run_dir / "calibration_schedule.json"
     if not f.exists():
         raise FileNotFoundError(f"{f} not found: calibrate this component first")
@@ -27,6 +28,11 @@ def run_fusion(
         source: str = "excel",
         runs_root: Union[str, Path] = Path("artifacts/runs"),
 ) -> Path:
+    """Replay a registered fusion: combine the components' saved schedules into one run.
+
+    Components must have been calibrated first (their schedules are read from
+    `runs_root/<component>`).
+    """
     out_dir = Path(out_dir)
     entry = FUSIONS[name]
     profiles = [REGISTRY[c].build_profile() for c in entry.components]

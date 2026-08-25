@@ -44,7 +44,11 @@ def assemble_corn_inputs(
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
-    
+    """Build corn ProfileInputs: spot mids (ARG/BRZ) and their spread on the futures clock.
+
+    Sparse spot quotes are mid-repaired then forward-filled onto the CORN
+    futures trading days.
+    """
     ohlcv = slice_window(ohlcv, start, end)
     arg = slice_window(arg, start, end)
     brz = slice_window(brz, start, end)
@@ -57,8 +61,7 @@ def assemble_corn_inputs(
     # arg_mid = mid(arg[schema.BID], arg[schema.OFFER])
     # brz_mid = mid(brz[schema.BID], brz[schema.OFFER])
 
-    # Legacy clock = intersection(spot_arg, spot_brz, futures); spots are
-    # ffilled over the full calendar there, so it reduces to the futures days.
+
     clock = build_from_index(ohlcv.index)
     arg_aligned = align_to_clock(arg_mid, clock, method="ffill")
     brz_aligned = align_to_clock(brz_mid, clock, method="ffill")

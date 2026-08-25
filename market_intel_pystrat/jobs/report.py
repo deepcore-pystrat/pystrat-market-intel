@@ -23,6 +23,7 @@ _DECISION_FILE = "decision_series.csv"
 
 
 def _html_document(title, figures) -> str:
+    """Standalone HTML page embedding the figures (plotly.js from CDN, loaded once)."""
     parts = [f.to_html(full_html=False, include_plotlyjs=("cdn" if i == 0 else False))
              for i, f in enumerate(figures)]
     return (f"<html><head><meta charset='utf-8'><title>{title}</title></head>"
@@ -49,11 +50,13 @@ def _read_decision_series(run_dir: Path) -> Mapping[str, pd.Series]:
 
 
 def _manifest_kind(run_dir: Path) -> str:
+    """Run kind from the manifest ('calibration' when absent); picks the renderers."""
     f = run_dir / "manifest.json"
     return json.loads(f.read_text()).get("kind", "calibration") if f.exists() else "calibration"
 
 
 def _schedule_folds_frame(schedule) -> pd.DataFrame:
+    """Schedule entries as a folds DataFrame (test_start_ts + param_ columns) for the plots."""
     rows = []
     for key in sorted(schedule, key=int):
         e = schedule[key]
@@ -64,6 +67,7 @@ def _schedule_folds_frame(schedule) -> pd.DataFrame:
 
 
 def _threshold_step_series(schedule, index):
+    """Step series of the scheduled low/high thresholds over `index` (per-fold constants)."""
     lows = pd.Series(index=index, dtype=float)
     highs = pd.Series(index=index, dtype=float)
     for key in sorted(schedule, key=int):
@@ -76,6 +80,7 @@ def _threshold_step_series(schedule, index):
 
 
 def save_report_html(run_dir: Path, *, title: str = "Calibration report") -> Path:
+    """Write report.html: OOS equity + drawdown + per-fold selection bars."""
     b = load_run(run_dir)
     param_cols = [c for c in b.selected_folds.columns if c.startswith("param_")]
     figs = [plot_oos_equity_frame(b.oos_equity, b.oos_fills, b.selected_folds, param_cols=param_cols),
@@ -87,6 +92,7 @@ def save_report_html(run_dir: Path, *, title: str = "Calibration report") -> Pat
 
 
 def save_view_html(run_dir: Path, *, title: str = "Schedule replay view") -> Path:
+    """Write view.html: OOS equity + drawdown, fold info taken from the schedule."""
     b = load_run(run_dir)
     folds_df = _schedule_folds_frame(b.calibration_schedule)
     param_cols = [c for c in folds_df.columns if c.startswith("param_")]
@@ -98,10 +104,13 @@ def save_view_html(run_dir: Path, *, title: str = "Schedule replay view") -> Pat
 
 
 def save_diagnostic_html(run_dir: Path, *, title: str = "Strategy diagnostic") -> Path:
+    """Write diagnostic.html: price/decision/position panels + strategy vs buy & hold.
+
+    Threshold step-lines are auto-added when every fold's params define low/high.
+    """
     b = load_run(run_dir)
     trace, fills, schedule = b.oos_trace, b.oos_fills, b.calibration_schedule
     price = trace.set_index("timestamp")["price"] if not trace.empty else pd.Series(dtype=float)
-    decision = dict(_read_decision_series(run_dir))
     decision = dict(_read_decision_series(run_dir))
     has_thresholds = bool(schedule) and all(
         "low" in e["best_params"] and "high" in e["best_params"] for e in schedule.values()
@@ -140,6 +149,7 @@ def _exposure_summary_table(target: pd.Series, qty: pd.Series) -> go.Figure:
 
 
 def save_fusion_diagnostic_html(run_dir: Path, *, title: str = "Fusion diagnostic") -> Path:
+    """Write diagnostic.html for a fusion run: fused diagnostic + fusion vs buy & hold."""
     b = load_schedule_replay(run_dir)
     components = b.manifest.get("components", [])
     eq = b.oos_equity.set_index("date")["equity"]
@@ -227,6 +237,7 @@ _RENDERERS = {
 
 
 def render_run(run_dir: Union[str, Path], decision: Optional[Mapping[str, pd.Series]] = None) -> Path:
+    """Render every HTML report matching the run's kind; persists `decision` if given."""
     run_dir = Path(run_dir)
     if decision:
         _write_decision_series(run_dir, decision)
