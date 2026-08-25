@@ -58,6 +58,10 @@ def _cmd_daily(args):
         data_dir=os.environ.get("MARKET_INTEL_DATA_DIR"),
     )
     print(json.dumps(report, indent=2))
+    if args.notify:
+        # deferred import: publish deps ([publish] extra) only needed when enabled
+        from market_intel_pystrat.publish.publish_services import format_daily_report, send_slack_message
+        send_slack_message(format_daily_report(report))
     if has_failures(report):
         raise SystemExit(1)
 
@@ -106,6 +110,8 @@ def main() -> None:
                          help="IBKR history duration (e.g. '2 D'; '15 Y' for a backfill)")
     p_daily.add_argument("--runs-root", type=Path, default=Path("artifacts/runs"),
                          help="directory containing the run folders")
+    p_daily.add_argument("--notify", action="store_true",
+                         help="send the report to Slack (requires [publish] extra and SLACK_* settings)")
     p_daily.set_defaults(func=_cmd_daily)
 
     args = parser.parse_args()
