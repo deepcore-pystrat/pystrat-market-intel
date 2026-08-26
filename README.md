@@ -15,6 +15,7 @@ git clone https://github.com/deepcore-pystrat/pystrat-market-intel.git
 cd pystrat-market-intel
 python -m venv .venv
 .venv\Scripts\activate        # Windows (Linux/macOS: source .venv/bin/activate)
+python -m pip install --upgrade pip   # stock pip 21.x cannot do modern editable installs
 pip install -e .[dev,postgres]
 ```
 
@@ -41,9 +42,10 @@ git clone https://github.com/deepcore-pystrat/pystrat-market-intel.git
 cd pystrat-market-intel
 python -m venv .venv
 .venv\Scripts\activate
+python -m pip install --upgrade pip
 
-pip install -e ../pystrat-lib          # the library FIRST, editable
-pip install -e .[dev,postgres]         # then the project (pystrat already satisfied, not re-downloaded)
+pip install -e .[dev,postgres]         # the project first (pulls a frozen pystrat from GitHub)
+pip install -e ../pystrat-lib          # the library LAST: the editable clone overrides the frozen copy
 ```
 
 ### Day-to-day team workflow
