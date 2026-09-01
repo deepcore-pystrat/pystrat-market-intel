@@ -1,6 +1,7 @@
 {
   "artifact_schema_version": 1,
-  "created_at": "2026-08-20T13:31:44.030190+00:00",
+  "created_at": "2026-08-26T08:24:42.686136+00:00",
   "profile": "sb11_zscore",
-  "kind": "calibration"
+  "kind": "schedule_replay",
+  "new_folds": 0
 }

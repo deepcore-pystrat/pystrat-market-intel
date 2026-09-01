@@ -25,15 +25,15 @@ from market_intel_pystrat.data.profile_inputs_data import (
 from pystrat.features.features_services import mid_from_sparse_quotes
 
 def corn_spec() -> InstrumentSpec:
-    """Corn futures spec, legacy notional accounting: multiplier 1, unit steps."""
+    """Corn ZC: 5,000 bu quoted in ct/bu -> $50 per 1.00 ct point."""
     return InstrumentSpec(
         id=InstrumentId(symbol="CORN", venue="CBOT"),
         asset_class=AssetClass.COMMODITY,
         contract_type=ContractType.FUTURE,
         quote_currency="USD",
-        price_tick=0.01,
+        price_tick=0.25,
         quantity_step=1.0,
-        contract_multiplier=1.0,
+        contract_multiplier=50.0,
     )
 
 
