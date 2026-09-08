@@ -21,6 +21,7 @@ BASIS_CORN_BRZ_KEY = "BASIS_CORN_BRZ"
 SPOT_ARG_COLUMN = "spot_arg_mid"
 SPOT_BRZ_COLUMN = "spot_brz_mid"
 SPREAD_COLUMN = "spread"
+HMM_REGIME_COLUMN = "hmm_regime"
 
 @dataclass(frozen=True)
 class ProfileInputs :

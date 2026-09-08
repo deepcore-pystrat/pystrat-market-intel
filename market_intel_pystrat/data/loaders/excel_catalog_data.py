@@ -30,3 +30,6 @@ COFFEE_BASIS_SHEETS = {
     "BASIS_COFFEE_ARBC": "Coffee Arabica",
     "BASIS_COFFEE_RBST": "Coffee Robusta",
 }
+REGIME_FILES = {
+    "HMM_CORN": "spot_hmm_state_feed_test.csv",
+}

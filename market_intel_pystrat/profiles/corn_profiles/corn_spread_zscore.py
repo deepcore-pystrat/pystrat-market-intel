@@ -23,7 +23,7 @@ from pystrat.strategy.strategies.piecewise_strategy import Handoff
 from market_intel_pystrat.data.profile_inputs_data import CORN_KEY, SPREAD_COLUMN
 from market_intel_pystrat.profiles.profile_data import MarketIntelProfile
 
-DATA_START = "2020-01-01"
+DATA_START = "2021-09-27"
 DATA_END = "2026-07-01"
 _BASE_NOTIONAL = 300_000_000.0
 _CAPITAL = 300_000_000.0
@@ -41,7 +41,6 @@ def make_space() -> dict:
         "periods": Choice(tuple(range(1, 10))),
         "window": Choice(tuple(range(5, 51, 5))),
     }
-
 
 def build_strategy(params: Mapping[str, Any]) -> Strategy:
     periods = int(params["periods"])

@@ -7,3 +7,4 @@ __pycache__/
 build/
 dist/
 .pytest_cache/
+market_intel_pystrat/data/*.csv

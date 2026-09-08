@@ -21,6 +21,7 @@ from market_intel_pystrat.data.profile_inputs_data import (
     SPOT_ARG_COLUMN,
     SPOT_BRZ_COLUMN,
     SPREAD_COLUMN,
+    HMM_REGIME_COLUMN,
 )
 from pystrat.features.features_services import mid_from_sparse_quotes
 
@@ -41,26 +42,16 @@ def assemble_corn_inputs(
     ohlcv: pd.DataFrame,
     arg: pd.DataFrame,
     brz: pd.DataFrame,
+    regimes: Optional[pd.DataFrame] = None,
     start: Optional[str] = None,
     end: Optional[str] = None,
 ) -> ProfileInputs:
-    """Build corn ProfileInputs: spot mids (ARG/BRZ) and their spread on the futures clock.
-
-    Sparse spot quotes are mid-repaired then forward-filled onto the CORN
-    futures trading days.
-    """
     ohlcv = slice_window(ohlcv, start, end)
     arg = slice_window(arg, start, end)
     brz = slice_window(brz, start, end)
 
     arg_mid = mid_from_sparse_quotes(arg[schema.BID], arg[schema.OFFER])
     brz_mid = mid_from_sparse_quotes(brz[schema.BID], brz[schema.OFFER])
-
-    # arg_mid = mid(arg[schema.BID], arg[schema.OFFER]).dropna()
-    # brz_mid = mid(brz[schema.BID], brz[schema.OFFER]).dropna()
-    # arg_mid = mid(arg[schema.BID], arg[schema.OFFER])
-    # brz_mid = mid(brz[schema.BID], brz[schema.OFFER])
-
 
     clock = build_from_index(ohlcv.index)
     arg_aligned = align_to_clock(arg_mid, clock, method="ffill")
@@ -72,6 +63,12 @@ def assemble_corn_inputs(
             SPREAD_COLUMN: arg_aligned - brz_aligned,
         }
     )
+
+    if regimes is not None:
+        regimes = slice_window(regimes, start, end)
+        feature_frame[HMM_REGIME_COLUMN] = align_to_clock(
+            regimes["regime"], clock, method="ffill"
+        )
 
     context = Context(clock=clock, frames={CORN_KEY: feature_frame})
     price_frames = {CORN_KEY: align_dataframe_to_clock(ohlcv, clock, method=None)}
