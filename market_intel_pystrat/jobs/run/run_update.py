@@ -90,6 +90,11 @@ def run_update(
         manifest={"profile": name, "kind": "schedule_replay", "new_folds": len(extension.new_selected_folds)},
         overwrite=True
     )
-    decision = profile.decision_series(context, schedule=extension.schedule) if profile.decision_series else None
-    
+    decision_schedule = {k: dict(v) for k, v in extension.schedule.items()}
+    last_key = max(decision_schedule, key=int)
+    n_bars = len(context.clock.index)
+    if n_bars > int(decision_schedule[last_key]["test_end_idx_exclusive"]):
+        decision_schedule[last_key]["test_end_idx_exclusive"] = n_bars
+    decision = profile.decision_series(context, schedule=decision_schedule) if profile.decision_series else None
+        
     return render_run(run_dir, decision=decision)
